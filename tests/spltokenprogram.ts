@@ -3,6 +3,10 @@ import { Program } from "@coral-xyz/anchor";
 import { Spltokenprogram } from "../target/types/spltokenprogram";
 import { TOKEN_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 import { createAccount } from "@solana/spl-token";
+import { Keypair } from "@solana/web3.js";
+
+
+
 describe("spltokenprogram", () => {
   // Configure the client to use the local cluster.
   const provider = anchor.AnchorProvider.env()
@@ -10,7 +14,8 @@ describe("spltokenprogram", () => {
   const program = anchor.workspace.Spltokenprogram as Program<Spltokenprogram>;
 
 
-  const mintToken = anchor.web3.Keypair.generate()
+  // const mintToken = anchor.web3.Keypair.generate()
+  const mintToken = Keypair.fromSecretKey(Uint8Array.from(require('./7oysHEbos49JX4dvBA6bQ6Ydji8DjoLUmCwXKYVqPdzs.json')));
 
   const associateTokenProgram = new anchor.web3.PublicKey("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL")
 
